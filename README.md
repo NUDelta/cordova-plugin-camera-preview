@@ -387,6 +387,14 @@ CameraPreview.setExposureCompensation(3);
 CameraPreview.setPreviewSize({width: window.screen.width, height: window.screen.height});
 ```
 
+### setPreviewRect([rect, successCallback, errorCallback])
+
+<info>Change the rectangle (x-y position) and size (width, height) of the preview window.</info><br/>
+
+```javascript
+CameraPreview.setPreviewRect({x: 0, y: 0, width: window.screen.width, height: window.screen.height});
+```
+
 ### getSupportedPictureSizes(cb, [errorCallback])
 
 ```javascript

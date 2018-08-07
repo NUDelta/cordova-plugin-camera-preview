@@ -34,6 +34,13 @@ interface CameraPreviewPreviewSizeDimension {
  width?: number;
 }
 
+interface CameraPreviewPreviewSizeRect {
+ x?: number;
+ y?: number;
+ width?: number;
+ height?: number;
+}
+
 interface CameraPreview {
  startCamera(options?: CameraPreviewStartCameraOptions, onSuccess?: CameraPreviewSuccessHandler, onError?: CameraPreviewErrorHandler): void;
  stopCamera(onSuccess?: CameraPreviewSuccessHandler, onError?: CameraPreviewErrorHandler): void;
@@ -48,6 +55,7 @@ interface CameraPreview {
  getZoom(onSuccess?: CameraPreviewSuccessHandler, onError?: CameraPreviewErrorHandler): void;
  getHorizontalFOV(onSuccess?: CameraPreviewSuccessHandler, onError?: CameraPreviewErrorHandler): void;
  setPreviewSize(dimensions?: CameraPreviewPreviewSizeDimension|string, onSuccess?: CameraPreviewSuccessHandler, onError?: CameraPreviewErrorHandler): void;
+ setPreviewRect(rect?: CameraPreviewPreviewSizeRect|string, onSuccess?: CameraPreviewSuccessHandler, onError?: CameraPreviewErrorHandler): void;
  getSupportedPictureSizes(onSuccess?: CameraPreviewSuccessHandler, onError?: CameraPreviewErrorHandler): void;
  getSupportedFlashModes(onSuccess?: CameraPreviewSuccessHandler, onError?: CameraPreviewErrorHandler): void;
  getSupportedColorEffects(onSuccess?: CameraPreviewSuccessHandler, onError?: CameraPreviewErrorHandler): void;

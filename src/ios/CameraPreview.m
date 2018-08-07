@@ -534,6 +534,32 @@
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
+- (void) setPreviewRect: (CDVInvokedUrlCommand*)command {
+
+    CDVPluginResult *pluginResult;
+
+    if (self.sessionManager == nil) {
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Session not started"];
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+        return;
+    }
+
+    if (command.arguments.count > 3) {
+        CGFloat x = (CGFloat)[command.arguments[0] floatValue];
+        CGFloat y = (CGFloat)[command.arguments[1] floatValue];
+        CGFloat width = (CGFloat)[command.arguments[2] floatValue];
+        CGFloat height = (CGFloat)[command.arguments[3] floatValue];
+
+        self.cameraRenderController.view.frame = CGRectMake(x, y, width, height);
+
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+    } else {
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Invalid number of parameters"];
+    }
+
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+}
+
 - (void) getSupportedPictureSizes:(CDVInvokedUrlCommand*)command {
   NSLog(@"getSupportedPictureSizes");
   CDVPluginResult *pluginResult;
